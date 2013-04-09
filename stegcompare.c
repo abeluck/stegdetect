@@ -128,24 +128,24 @@ docompare(char *file1, char *file2)
 	one = 0;
 	ratio = 0.5;
 	for (i = 0; i < bits1; i++) {
-		if (dcts1[i] >= -127 && 
+		if (dcts1[i] >= -127 &&
 		    dcts1[i] <= 127)
 			hist1[dcts1[i] + 128]++;
-		
-		if (dcts2[i] >= -127 && 
+
+		if (dcts2[i] >= -127 &&
 		    dcts2[i] <= 127)
 			hist2[dcts2[i] + 128]++;
 
 		if (abs(dcts2[i]) & 1)
 			one++;
-		
+
 		if ((i % 500) == 0 && i) {
 			ratio = 0.7*ratio + 0.3*((float)one/500);
 			one = 0;
 		}
 
 		if (dcts1[i] != dcts2[i]) {
-			ushort first, second;
+			unsigned short first, second;
 
 			count++;
 
@@ -158,7 +158,7 @@ docompare(char *file1, char *file2)
 				first = dcts1[i];
 				second = dcts2[i];
 			}
-			   
+
 			sumlast += last >= 0 ? i - last : 0;
 			if ((scans & FLAG_HIST) == 0) {
 				fprintf(stdout,
@@ -170,7 +170,7 @@ docompare(char *file1, char *file2)
 			}
 			last = i;
 
-			if (dcts1[i] >= -127 && 
+			if (dcts1[i] >= -127 &&
 			    dcts1[i] <= 127)
 				hist[dcts1[i] + 128]++;
 
@@ -280,7 +280,7 @@ main(int argc, char *argv[])
 		usage();
 		exit(1);
 	}
-	
+
 	setvbuf(stdout, NULL, _IOLBF, 0);
 
 	docompare(argv[0], argv[1]);
