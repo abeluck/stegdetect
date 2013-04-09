@@ -77,7 +77,7 @@ f5_compress(struct image *image, struct jeasy *je, int quality, FILE **pfin)
 	struct jpeg_compress_struct cinfo;
 	struct jpeg_decompress_struct *jinfo;
 	static struct jpeg_error_mgr jerr, jsrcerr;
-	char template[] = "/tmp/stegdetect.XXXX";
+	char template[] = "/tmp/stegdetect.XXXXXX";
 	JSAMPROW row_pointer[1];	/* pointer to JSAMPLE row[s] */
 	FILE *fout, *fin;
 	int row_stride;		/* physical row width in image buffer */
@@ -132,7 +132,7 @@ f5_compress(struct image *image, struct jeasy *je, int quality, FILE **pfin)
 
 	jpeg_finish_compress(&cinfo);
 	jpeg_destroy_compress(&cinfo);
-  
+
 	fclose(fout);
 	close(fd);
 
@@ -178,7 +178,7 @@ f5_luminanceimage(struct jeasy *je, struct image *image)
 	image->depth = 1;
 
 	rowspan = image->x * image->depth;
-	
+
 	if ((img = malloc(image->x*image->y)) == NULL)
 		err(1, "malloc");
 
