@@ -1,0 +1,147 @@
+.\"	$OpenBSD: mdoc.template,v 1.6 2001/02/03 08:22:44 niklas Exp $
+.\"
+.\" The following requests are required for all man pages.
+.Dd April 01, 2001
+.Dt STEGDETECT 1
+.Os
+.Sh NAME
+.Nm stegdetect
+.Nd finds image files with steganographic content
+.Sh SYNOPSIS
+.\" For a program:  program [-abc] file ...
+.Nm stegdetect
+.Op Fl qhnV
+.Op Fl s Ar float
+.Op Fl C Ar num,tfname
+.Op Fl c Ar file ... Ar name
+.Op Fl D Ar file
+.Op Fl d Ar num
+.Op Fl t Ar tests
+.Op Ar file ...
+.Sh DESCRIPTION
+The
+.Nm
+utility analyses image files for steganographic content.  It runs
+statistical tests to determine if steganographic content is present,
+and also tries to find the system that has been used to embed the
+hidden information.
+.Pp
+The options are as follows:
+.Bl -tag -width Ds_tests
+.It Fl q
+Only reports images that are likely to have steganographic content.
+.It Fl h
+Only calculates the DCT histogram.  Use the
+.Fl d
+option to display the values.
+.It Fl n
+Enables checking of JPEG header information to surpress false
+positives.  If enabled, all JPEG images that contain comment fields
+will be treated as negatives.  OutGuess checking will be disabled
+if the JFIF marker does not match version 1.1.
+.It Fl V
+Displays the version number of the software.
+.It Fl s Ar float
+Changes the sensitivity of the detection algorithms.  Their results
+are multiplied by the specified number.  The higher the number the
+more sensitive the test will become.  The default is 1.
+.It Fl C Ar num,tfname
+Feature vectors are being extraced from the images.  The argument
+.Ar num
+can either be zero or one.  A zero indicates that the provided images
+do not contain steganographic content, a one indicates that they do.
+The argument
+.Ar tfname
+is the name of transform used for feature extraction.
+The features vectores are printed to
+.Va stdout .
+.It Fl c Ar file
+Reads the data created by the
+.Fl C
+options and computes the necessary values to detect steganographic
+content in yet unknown images.  The option can be used multiple times.
+It expects that the name of the scheme provided as additional argument.
+The result is a decision object that can be used with the
+.Fl D
+option.
+The decision object contains a the parameters for a linear discriminant
+function based on the Neyman-Pearson theorem.
+.It Fl D Ar file
+Reads a decision object that contains detection information about
+a new steganographic scheme.
+.It Fl d Ar num
+Prints debug information.
+.It Fl t Ar tests
+Sets the tests that are being run on the image.  The following characters
+are understood:
+.Bl -tag -width Ds
+.It j
+Tests if information has been embedded with
+.Tn jsteg .
+.It o
+Tests if information has been embedded with
+.Tn outguess .
+.It p
+Tests if information has been embedded with
+.Tn jphide .
+.It i
+Tests if information has been hidden with
+.Tn invisible secrets .
+.It f
+Tests if information has been hidden with
+.Tn F5 .
+.It F
+Tests if information has been hidden with
+.Tn F5
+using a more sophisticated but fairly slow detection algorithm.
+.It a
+Tests if information has been added at the end of file, for example
+by
+.Tn camouflage
+or
+.Tn appendX .
+.El
+.Pp
+The default value is
+.Va jopifa .
+.El
+.Pp
+The
+.Nm
+utility indicates the accuracy of the detection with a number of stars
+behind the detected system.  If no filenames have been specified,
+.Nm
+will read the filenames from
+.Dv stdin .
+.\" The following requests should be uncommented and used where appropriate.
+.Sh EXAMPLES
+.Cm stegdetect -t p auto.jpg
+.Pp
+Tries to detect the presence of
+.Tn jphide
+embedded information in
+.Fa auto.jpg .
+.\" This next request is for sections 2 and 3 function return values only.
+.\" .Sh RETURN VALUES
+.\" The next request is for sections 2 and 3 error and signal handling only.
+.Sh ERRORS
+.Nm
+works only for
+.Tn JPEG
+images.
+.Pp
+Currently, there is no support for parameter training.  The only exported
+knob is the sensitivity level.  Future versions will export all detection
+parameters via a configuration file.
+.Sh SEE ALSO
+.Xr stegbreak 1
+.Sh ACKNOWLEDGEMENTS
+This product includes software developed by Ian F. Darwin and others.
+The
+.Nm
+utility uses Darwin's file magic to identify data appended at the end of
+an image.
+.Sh AUTHORS
+The
+.Nm
+utility has been developed by Niels Provos.

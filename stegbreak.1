@@ -1,0 +1,112 @@
+.\"	$OpenBSD: mdoc.template,v 1.6 2001/02/03 08:22:44 niklas Exp $
+.\"
+.\" The following requests are required for all man pages.
+.Dd July 05, 2001
+.Dt STEGBREAK 1
+.Os
+.Sh NAME
+.Nm stegbreak
+.Nd launches brute-force dictionary attacks on JPG image
+.Sh SYNOPSIS
+.\" For a program:  program [-abc] file ...
+.Nm stegdetect
+.Op Fl qV
+.Op Fl r Ar rules
+.Op Fl f Ar wordlist
+.Op Fl t Ar tests
+.Op Fl c
+.Op Ar file ...
+.Sh DESCRIPTION
+The
+.Nm
+states a brute-force dictionary attack against the specified JPG
+images.
+.Pp
+The options are as follows:
+.Bl -tag -width Df_wordlist
+.It Fl q
+Only reports images for which the dictionary attack succeeded.
+.It Fl V
+Displays the version number of the software.
+.It Fl r Ar rules
+Contains rules with transformations that will be applied to the words
+in the wordlist.  The rules follow the same syntax as in Solar
+Designers password cracking program John the Ripper.  The default
+is
+.Pa rules.ini .
+.It Fl f Ar wordlist
+Specifies the file that contains the words for the dictionary attack.
+The default is
+.Pa /usr/share/dict/words .
+.It Fl t Ar tests
+Sets the tests that are being run on the image.  The following characters
+are understood:
+.Bl -tag -width Do
+.It o
+The dictionary attack follows the embedding used by
+.Tn outguess .
+.It p
+The dictionary attack follows the embedding used by
+.Tn jphide .
+.It j
+The dictionary attack follows the embedding used by
+.Tn jsteg-shell .
+.El
+.Pp
+The default value is
+.Va p .
+.It Fl c
+Specifies that the JPG images should be converted to a small sized
+object that contains all the information necessary for the dictionary
+attack.  This can be used to reduce the size of the data set in
+distributed computing applications.
+.El
+.Pp
+The
+.Nm
+prints the filename, the embedding system and the password when the
+attack succeeded for an image.  For jsteg-shell and outguess, it
+also prints analysis results from the
+built in
+.Pa file
+utility.
+.Pp
+Pressing Ctrl-C causes a status line to be displayed, pressing
+Ctrl-C a second time within one second aborts the program.
+.Pp
+
+.Sh EXAMPLES
+.Cm stegbreak -t p auto.jpg
+.Pp
+Launches a brute-force dictionary attack against
+.Fa auto.jpg
+assuming that information has been embedded with
+.Tn jphide .
+.Sh FILES
+.Bl -tag -width /usr/local/share/stegbreak/rules.ini -compact
+.It Pa /usr/share/dict/words
+default wordfile for the dictionary attack.
+.It Pa /usr/local/share/stegbreak/rules.ini
+rules on how to manipulate words for the dictionary attack, from
+John the Ripper.
+.El
+.Sh SEE ALSO
+.Xr stegdetect 1
+.Sh ACKNOWLEDGEMENTS
+This program contains source code from Solar Designer's John the
+Ripper.  It has been placed under a BSD-license with his permission.
+.Pp
+This product includes software developed by Ian F. Darwin and others.
+The
+.Nm
+utility uses Darwin's file magic to verify results from OutGuess key guessing.
+
+.Pp
+Korejwa provided information on the data format used by JSteg Shell.
+.Sh AUTHORS
+The
+.Nm
+utility has been developed by Niels Provos.
+.\" .Sh HISTORY
+.\" .Sh BUGS
+.\" .Sh CAVEATS
