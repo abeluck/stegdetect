@@ -40,3 +40,5 @@ jpeg-6b/jpegtran
 jpeg-6b/rdjpgcom
 jpeg-6b/wrjpgcom
 jpeg-6b/jconfig.h
+conftest*
+confdefs.h

@@ -16,6 +16,15 @@ To build on x86_64 you must prefix the commands with `linux32`, like so
 
 You can now run stegdetect from the local directory: `./stegdetect`
 
+### Build for Android
+
+This Android build is sort of fragile, there are many compile warnings.
+
+```bash
+    $ make clean
+    $ make -f Makefile.android
+```
+
 ### Usage
 
 Stegdetect does two types of F5 detection, simple and "slow". Simple merely
@@ -31,6 +40,21 @@ To run detection on a directory of JPEGs use:
         ./stegdetect -tF $img;
     done
 ```
+
+**Android**
+
+
+```bash
+    $ adb push stegdetect /data/local/tmp
+    $ adb shell
+        for img in `ls /sdcard/PixelKnot/*jpg`; do
+            /data/local/tmp/stegdetect -tF $img
+        done
+```
+
+### Usage
+
+
 
 ### License
 

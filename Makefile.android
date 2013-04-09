@@ -1,0 +1,69 @@
+# Please install the following prerequisites (instructions for each follows):
+# 	Android OS SDK: http://source.android.com/download
+#
+# Install and prepare the Android OS SDK ( http://source.android.com/download )
+# on Debian or Ubuntu
+
+### these modify the calling shell
+# point pkg-config to the .pc files generated from these builds
+export PKG_CONFIG_PATH=$(LOCAL)/lib/pkgconfig
+# workaround for cross-compiling bug in autoconf
+export ac_cv_func_malloc_0_nonnull=yes
+
+CWD = $(shell pwd)
+PROJECT_ROOT = $(CWD)/..
+EXTERNAL_ROOT = $(PROJECT_ROOT)
+
+# Android NDK setup
+NDK_BASE ?= /opt/android-ndk
+NDK_PLATFORM_LEVEL ?= 8
+NDK_ABI=arm
+NDK_SYSROOT=$(NDK_BASE)/platforms/android-$(NDK_PLATFORM_LEVEL)/arch-$(NDK_ABI)
+NDK_UNAME=`uname -s | tr '[A-Z]' '[a-z]'`
+#NDK_COMPILER_VERSION=4.4.3
+NDK_COMPILER_VERSION=4.6
+NDK_TOOLCHAIN=$(NDK_BASE)/toolchains/$(NDK_ABI)-linux-androideabi-$(NDK_COMPILER_VERSION)/prebuilt/$(NDK_UNAME)-x86
+
+# to use the real HOST tag, you need the latest libtool files:
+# http://stackoverflow.com/questions/4594736/configure-does-not-recognize-androideabi
+HOST := $(NDK_ABI)-linux-androideabi
+
+# install root for built files
+DESTDIR = $(EXTERNAL_ROOT)
+# TODO try adding the Android-style /data/app.name here
+prefix = 
+LOCAL := $(DESTDIR)$(prefix)
+
+PATH := ${PATH}:$(NDK_TOOLCHAIN)/bin:$(LOCAL)/bin
+
+CC := '$(NDK_TOOLCHAIN)/bin/arm-linux-androideabi-gcc --sysroot=$(NDK_SYSROOT)'
+CXX := $(NDK_TOOLCHAIN)/bin/arm-linux-androideabi-g++
+CPP := $(NDK_TOOLCHAIN)/bin/arm-linux-androideabi-cpp
+LD := $(NDK_TOOLCHAIN)/bin/arm-linux-androideabi-ld
+AR := $(NDK_TOOLCHAIN)/bin/arm-linux-androideabi-ar
+RANLIB := $(NDK_TOOLCHAIN)/bin/arm-linux-androideabi-ranlib
+STRIP := $(NDK_TOOLCHAIN)/bin/arm-linux-androideabi-strip \
+	--strip-unneeded -R .note -R .comment
+
+CFLAGS = -DANDROID
+LDFLAGS = -L$(NDK_SYSROOT)/usr/lib -L$(LOCAL)/lib
+
+# turn off gcc optmization on the native builds for now, to aid debugging
+
+# build as small as possible, mostly useful for static binaries
+#CFLAGS += -fdata-sections -ffunction-sections -Os
+#LDFLAGS += -Wl,--gc-sections
+# unoptimized debug builds!
+CFLAGS += -g
+
+
+all:
+	./configure \
+		CFLAGS='$(CFLAGS)' \
+		SYSROOT=$(NDK_SYSROOT) \
+		--host=$(HOST) && \
+		$(MAKE) CC=$(CC) \
+		CXX=$(CXX) \
+		CFLAGS='$(CFLAGS)'
+
+

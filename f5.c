@@ -77,7 +77,13 @@ f5_compress(struct image *image, struct jeasy *je, int quality, FILE **pfin)
 	struct jpeg_compress_struct cinfo;
 	struct jpeg_decompress_struct *jinfo;
 	static struct jpeg_error_mgr jerr, jsrcerr;
+#ifdef ANDROID
+	char template[] = "/data/local/tmp/stegdetect.XXXXXX";
+#else
+
 	char template[] = "/tmp/stegdetect.XXXXXX";
+#endif
+
 	JSAMPROW row_pointer[1];	/* pointer to JSAMPLE row[s] */
 	FILE *fout, *fin;
 	int row_stride;		/* physical row width in image buffer */
