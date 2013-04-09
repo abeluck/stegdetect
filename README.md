@@ -5,6 +5,9 @@ Stegdetect is an automated tool for detecting steganographic content in images.
 
 URL: http://www.outguess.org/detection.php
 
+This repo contains the 0.6 sources with compilation fixes for modern dev
+environments and Android (ARM).
+
 ### Building on x86_64
 
 To build on x86_64 you must prefix the commands with `linux32`, like so
@@ -51,10 +54,6 @@ To run detection on a directory of JPEGs use:
             /data/local/tmp/stegdetect -tF $img
         done
 ```
-
-### Usage
-
-
 
 ### License
 
