@@ -15,3 +15,28 @@
 *.exe
 *.out
 *.app
+
+# binarues
+stegdetect
+stegdeimage
+stegcompare
+stegbreak
+
+# extra crap
+stamp-h
+config.h
+config.log
+config.status
+Makefile
+./*/Makefile
+
+file/file.1
+file/magic
+file/magic.4
+file/magic.inc
+jpeg-6b/cjpeg
+jpeg-6b/djpeg
+jpeg-6b/jpegtran
+jpeg-6b/rdjpgcom
+jpeg-6b/wrjpgcom
+jpeg-6b/jconfig.h
