@@ -28,6 +28,7 @@
 
 #ifndef __file_h__
 #define __file_h__
+#include <stdio.h>	/* Include that here, to make sure __P gets defined */
 
 extern int   apprentice_memory(unsigned char *buf, unsigned int size);
 extern int   file_init(void);
@@ -125,7 +126,6 @@ struct mlist {
 	struct mlist *next, *prev;
 };
 
-#include <stdio.h>	/* Include that here, to make sure __P gets defined */
 #include <errno.h>
 
 #ifndef __P
