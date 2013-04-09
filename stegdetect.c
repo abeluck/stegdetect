@@ -78,7 +78,7 @@ char *progname;
 float DCThist[257];
 float scale = 1;		/* Sensitivity scaling */
 
-static int debug = 0;
+extern int debug;
 static int quiet = 0;
 static int ispositive = 0;	/* Current images contain stego */
 static char *transformname;	/* Current transform name */
