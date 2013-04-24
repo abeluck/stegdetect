@@ -23,6 +23,9 @@ You can now run stegdetect from the local directory: `./stegdetect`
 
 This Android build is sort of fragile, there are many compile warnings.
 
+You must set the environment variable `NDK_BASE` to the root location of your
+Android NDK.
+
 ```bash
     $ make clean
     $ make -f Makefile.android
