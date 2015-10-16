@@ -381,6 +381,13 @@ struct handler handlers[] = {
 		break_jsteg_write, break_jsteg_read,
 		jsteg_read_jpg
 	},
+	{
+		NULL, NULL,
+		NULL,
+		NULL, NULL,
+		NULL, NULL,
+		NULL
+	},
 };
 
 int
