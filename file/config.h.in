@@ -1,4 +1,4 @@
-/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+/* config.h.in.  Generated from configure.in by autoheader.  */
 /* Autoheader needs me */
 #undef PACKAGE
 
@@ -48,53 +48,53 @@
 /* The number of bytes in a uint64_t.  */
 #define SIZEOF_UINT64_T 0
 
-/* Define if you have the <inttypes.h> header file. */
+/* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
-/* Define if you have the <locale.h> header file. */
+/* Define to 1 if you have the <locale.h> header file. */
 #undef HAVE_LOCALE_H
 
-/* Define if you have the <memory.h> header file. */
+/* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
 
-/* Define if you have the `mmap' function. */
+/* Define to 1 if you have the `mmap' function. */
 #undef HAVE_MMAP
 
-/* Define if you have the <stdint.h> header file. */
+/* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
 
-/* Define if you have the <stdlib.h> header file. */
+/* Define to 1 if you have the <stdlib.h> header file. */
 #undef HAVE_STDLIB_H
 
-/* Define if you have the `strerror' function. */
+/* Define to 1 if you have the `strerror' function. */
 #undef HAVE_STRERROR
 
-/* Define if you have the <strings.h> header file. */
+/* Define to 1 if you have the <strings.h> header file. */
 #undef HAVE_STRINGS_H
 
-/* Define if you have the <string.h> header file. */
+/* Define to 1 if you have the <string.h> header file. */
 #undef HAVE_STRING_H
 
-/* Define if you have the `strtoul' function. */
+/* Define to 1 if you have the `strtoul' function. */
 #undef HAVE_STRTOUL
 
-/* Define if `st_rdev' is member of `struct stat'. */
+/* Define to 1 if `st_rdev' is a member of `struct stat'. */
 #undef HAVE_STRUCT_STAT_ST_RDEV
 
-/* Define if your `struct stat' has `st_rdev'. Deprecated, use
+/* Define to 1 if your `struct stat' has `st_rdev'. Deprecated, use
    `HAVE_STRUCT_STAT_ST_RDEV' instead. */
 #undef HAVE_ST_RDEV
 
-/* Define if you have the <sys/mman.h> header file. */
+/* Define to 1 if you have the <sys/mman.h> header file. */
 #undef HAVE_SYS_MMAN_H
 
-/* Define if you have the <sys/stat.h> header file. */
+/* Define to 1 if you have the <sys/stat.h> header file. */
 #undef HAVE_SYS_STAT_H
 
-/* Define if you have the <sys/types.h> header file. */
+/* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
 
-/* Define if you have <sys/wait.h> that is POSIX.1 compatible. */
+/* Define to 1 if you have <sys/wait.h> that is POSIX.1 compatible. */
 #undef HAVE_SYS_WAIT_H
 
 /* Define if you have tm_size */
@@ -103,22 +103,42 @@
 /* Define if you have tzname */
 #undef HAVE_TZNAME
 
-/* Define if you have the <unistd.h> header file. */
+/* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
-/* Define if `major', `minor', and `makedev' are declared in <mkdev.h>. */
+/* Define to 1 if `major', `minor', and `makedev' are declared in <mkdev.h>.
+   */
 #undef MAJOR_IN_MKDEV
 
-/* Define if `major', `minor', and `makedev' are declared in <sysmacros.h>. */
+/* Define to 1 if `major', `minor', and `makedev' are declared in
+   <sysmacros.h>. */
 #undef MAJOR_IN_SYSMACROS
 
 /* Name of package */
 #undef PACKAGE
 
-/* Define if you have the ANSI C header files. */
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the home page for this package. */
+#undef PACKAGE_URL
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
 
-/* Define if your <sys/time.h> declares `struct tm'. */
+/* Define to 1 if your <sys/time.h> declares `struct tm'. */
 #undef TM_IN_SYS_TIME
 
 /* Version number of package */
@@ -127,10 +147,10 @@
 /* Define to empty if `const' does not conform to ANSI C. */
 #undef const
 
-/* Define to `long' if <sys/types.h> does not define. */
+/* Define to `long int' if <sys/types.h> does not define. */
 #undef off_t
 
-/* Define to `unsigned' if <sys/types.h> does not define. */
+/* Define to `unsigned int' if <sys/types.h> does not define. */
 #undef size_t
 
 /* Define to `unsigned short' if <sys/types.h> does not define. */
