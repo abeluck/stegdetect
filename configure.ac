@@ -5,6 +5,7 @@ AC_CONFIG_SRCDIR(stegdetect.c)
 
 AM_INIT_AUTOMAKE(stegdetect, 0.6)
 AM_CONFIG_HEADER(config.h)
+AM_PROG_AS
 
 dnl Initialize prefix.
 if test "$prefix" = "NONE"; then
