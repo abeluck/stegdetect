@@ -16,6 +16,7 @@ AC_PROG_CXX
 AC_PROG_CC
 AC_C_INLINE
 AC_PROG_INSTALL
+AM_PROG_AS
 
 dnl Checks for libraries.
 AC_MSG_CHECKING(blowfish object)
