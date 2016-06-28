@@ -3,10 +3,7 @@ stegdetect
 
 Stegdetect is an automated tool for detecting steganographic content in images.
 
-URL: http://www.outguess.org/detection.php
-
-This repo contains the 0.6 sources with compilation fixes for modern dev
-environments and Android (ARM).
+This repo has been updated to compile cleanly on Ubuntu 16.04 since the original project appears to be abandoned and no accepts pull requests.
 
 ### Building on x86_64
 
