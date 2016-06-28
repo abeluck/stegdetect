@@ -3,7 +3,7 @@ stegdetect
 
 Stegdetect is an automated tool for detecting steganographic content in images.
 
-This repo has been updated to compile cleanly on Ubuntu 16.04 since the original project appears to be abandoned and no accepts pull requests.
+This repo has been updated to compile cleanly on Ubuntu 16.04 since the original project appears to be abandoned and no longer accepts pull requests.
 
 ### Building on x86_64
 
