@@ -13,7 +13,6 @@
 
 # Executables
 *.exe
-*.out
 *.app
 
 # binarues
