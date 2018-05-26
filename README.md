@@ -3,11 +3,11 @@ stegdetect
 
 Stegdetect is an automated tool for detecting steganographic content in images.
 
-This repo has been updated to compile cleanly on Ubuntu 16.04 since the original project appears to be abandoned and no longer accepts pull requests.
+This repo has been updated to compile cleanly on Ubuntu since the original project appears to be abandoned and no longer accepts pull requests.
 
-### Building on x86_64
+Tested on Ubuntu 16.04 and 18.04 only(17.x likely works though)
 
-To build on x86_64 you must prefix the commands with `linux32`, like so
+### Building on 64-bit Systemgs
 
 ```bash
     $ linux32 ./configure
@@ -54,7 +54,3 @@ To run detection on a directory of JPEGs use:
             /data/local/tmp/stegdetect -tF $img
         done
 ```
-
-### License
-
-Copyright 2002 Niels Provos <provos@citi.umich.edu>. See LICENSE for details.
