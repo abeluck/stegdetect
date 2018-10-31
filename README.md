@@ -1,6 +1,16 @@
 stegdetect
 ==========
 
+**Note**: This repo is a code mirror of [the original source](http://www.outguess.org/detection.php) which is now dead. Here is a working [archive](https://web.archive.org/web/20150415213536/http://www.outguess.org/detection.php) of the page.
+
+Stegdetect and Stegbreak have been developed by [Niels Provos](http://niels.xtdnet.nl/).
+
+[Copyright 2002 Niels Provos <provos@citi.umich.edu>](LICENSE)
+
+**This repo is not maintained. Use at your own risk (there are known issues)**
+
+---
+
 Stegdetect is an automated tool for detecting steganographic content in images.
 
 This repo has been updated to compile cleanly on Ubuntu since the original project appears to be abandoned and no longer accepts pull requests.
